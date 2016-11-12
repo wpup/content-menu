@@ -82,6 +82,8 @@ class Menu {
 	protected function get_post_types() {
 		$post_types = get_post_types( ['content_menu' => true] );
 		$post_types = array_values( $post_types );
+		$post_types = array_merge( $post_types, ['post', 'page'] );
+		$post_types = array_unique( $post_types );
 
 		/**
 		 * Let developers modify post types array.
