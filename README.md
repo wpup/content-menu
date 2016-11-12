@@ -6,6 +6,8 @@ Adds a content menu to WordPress admin where all your post types that are used f
 
 Both `post` and `page` will be moved to content menu by default and can be unmoved by `content_menu_post_types` filter.
 
+Content menu will only have submenu items when a post type is selected so you can see and use the submenu items for that post types, as you can see in the second screenshot.
+
 ## Installation
 
 ```sh
