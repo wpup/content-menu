@@ -180,6 +180,10 @@ class Menu {
 				display: none;
 			}
 
+			.wp-list-table span.dashicons {
+				padding-right: 5px;
+			}
+
 			.wp-list-table tfoot {
 				display: none;
 			}

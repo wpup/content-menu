@@ -36,18 +36,20 @@ class Table extends \WP_List_Table {
 			}
 
 			$post_type_object = get_post_type_object( $post_type );
+			$menu_icon = empty( $post_type_object->menu_icon ) ? 'dashicons-admin-post' : $post_type_object->menu_icon;
 
 			$links = $submenu[$key];
 			$item  = [
-				'ID'   => $index,
-				'type' => $post_type_object->labels->name,
-				'menu' => ''
+				'ID'    => $index,
+				'type'  => '',
+				'menu'  => '',
+				'title' => $post_type_object->labels->name
 			];
 
 			foreach ( $links as $index2 => $link ) {
 				if ( $index2 === 5 ) {
 					$url = admin_url( $link[2] );
-					$item['type'] = sprintf( '<a href="%s">%s</a>', $url, $item['type'] );
+					$item['type']  = sprintf( '<span class="dashicons %s"></span> <a href="%s">%s</a>', $menu_icon, $url, $item['title'] );
 					continue;
 				}
 
@@ -93,18 +95,8 @@ class Table extends \WP_List_Table {
 	 */
 	public function prepare_items() {
 		$this->_column_headers = [$this->get_columns()];
-		usort( $this->items, array( $this, 'usort_reorder' ) );
-	}
-
-	/**
-	 * Callback to allow sorting of example data.
-	 *
-	 * @param  string $a
-	 * @param  string $b
-	 *
-	 * @return int
-	 */
-	protected function usort_reorder( $a, $b ) {
-		return strcmp( $a['type'], $b['type'] );
+		usort( $this->items, function ( $a, $b ) {
+			return strcasecmp( $a['title'], $b['title'] );
+		} );
 	}
 }
