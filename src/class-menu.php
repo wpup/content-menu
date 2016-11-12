@@ -15,8 +15,15 @@ class Menu {
 	 * Menu construct.
 	 */
 	public function __construct() {
+		// Setup menu index.
 		$this->index = $this->get_index();
 
+		// Load localization files.
+		$locale = apply_filters( 'plugin_locale', get_locale(), 'wp-content-menu' );
+		load_textdomain( 'wp-content-menu', WP_LANG_DIR . '/wp-content-menu/wp-content-menu-' . $locale . '.mo' );
+		load_textdomain( 'wp-content-menu', PAPI_PLUGIN_DIR . '../languages/wp-content-menu-' . $locale . '.mo' );
+
+		// Hook into admin actions.
 		add_action( 'admin_init', [$this, 'remove_post_types_menu'] );
 		add_action( 'admin_init', [$this, 'move_post_type_menu'] );
 		add_action( 'admin_menu', [$this, 'admin_menu'] );
