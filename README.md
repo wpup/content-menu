@@ -28,7 +28,7 @@ add_filter( 'content_menu_post_types', function () {
 
 ## Screenshots
 
-![](https://cloud.githubusercontent.com/assets/14610/20239327/5ee112e6-a8fe-11e6-8816-c71920e5abfc.png)
+![](https://cloud.githubusercontent.com/assets/14610/20240391/4ab1f8d0-a917-11e6-9994-616924b94f53.png)
 
 ![](https://cloud.githubusercontent.com/assets/14610/20239328/5ee39264-a8fe-11e6-940b-77658b2f0b0b.png)
 
