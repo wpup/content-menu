@@ -23,7 +23,7 @@ register_post_type( 'book', [
 ] );
 
 // With the filter.
-add_filter( 'content_menu_post_types', function () {
+add_filter( 'content_menu_post_types', function ( $post_types ) {
   return ['page', 'post', 'book']
 } );
 ```
