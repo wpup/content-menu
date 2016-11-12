@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Content menu
  * Plugin URI: https://github.com/frozzare/wp-content-menu
- * Description: Content menu
+ * Description: Adds a content menu to WordPress admin
  * Author: Fredrik Forsmo
  * Author URI: https://github.com/frozzare
  * Version: 1.0.0

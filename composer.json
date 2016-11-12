@@ -2,7 +2,7 @@
   "name": "wp-content-menu",
   "type": "wordpress-plugin",
   "license": "MIT",
-  "description": "",
+  "description": "Adds a content menu to WordPress admin",
   "homepage": "https://github.com/frozzare/wp-content-menu",
   "authors": [
     {
