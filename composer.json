@@ -1,5 +1,5 @@
 {
-  "name": "wp-content-menu",
+  "name": "frozzare/wp-content-menu",
   "type": "wordpress-plugin",
   "license": "MIT",
   "description": "Adds a content menu to WordPress admin",
