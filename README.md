@@ -32,7 +32,7 @@ add_filter( 'content_menu_post_types', function ( $post_types ) {
 
 You can modify `Add New Book` label by `content_menu_add_new_item_label` filter.
 
-```
+```php
 add_filter( 'content_menu_add_new_item_label', function ( $label ) {
   return 'Add New';
 } );
