@@ -16,7 +16,7 @@ composer require frozzare/wp-content-menu
 
 ## Usage
 
-To move your post types into content menu you can set `content_menu` to `true` in `register_post_type` or use a filter.
+To move your post types into content menu you can set `content_menu` to `true` in `register_post_type` or use `content_menu_post_types` filter.
 
 ```php
 // With `register_post_type`
