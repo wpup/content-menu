@@ -30,6 +30,14 @@ add_filter( 'content_menu_post_types', function ( $post_types ) {
 } );
 ```
 
+You can modify `Add New Book` label by `content_menu_add_new_item_label` filter.
+
+```
+add_filter( 'content_menu_add_new_item_label', function ( $label ) {
+  return 'Add New';
+} );
+```
+
 ## Screenshots
 
 ![](https://cloud.githubusercontent.com/assets/14610/20240391/4ab1f8d0-a917-11e6-9994-616924b94f53.png)
