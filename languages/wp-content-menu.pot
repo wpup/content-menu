@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-content-menu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-12 21:07+0100\n"
+"POT-Creation-Date: 2016-11-14 08:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,13 +17,17 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
 
-#: src/class-menu.php:54 src/class-menu.php:55 src/class-menu.php:217
+#: src/class-menu.php:54 src/class-menu.php:55 src/class-menu.php:227
 #: src/class-table.php:18 src/class-table.php:19
 msgid "Content"
 msgstr ""
 
-#: src/class-menu.php:136
+#: src/class-menu.php:140
 msgid "All Content"
+msgstr ""
+
+#: src/class-menu.php:149
+msgid "Add New"
 msgstr ""
 
 #: src/class-table.php:73
