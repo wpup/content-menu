@@ -116,6 +116,8 @@ class Menu {
 
 		$i = $this->index - 1;
 
+		$post_type_object = get_post_type_object( $post_type );
+
 		foreach ( $menu as $index => $value ) {
 			if ( ! array_search( $key, $value ) ) {
 				continue;
@@ -142,6 +144,12 @@ class Menu {
 			];
 
 			foreach ( $submenu[$key] as $index => $value ) {
+				if ( $value[0] === $post_type_object->labels->add_new ) {
+					$value[0] = apply_filters( 'content_menu_add_new_item_label',
+						sprintf( '%s %s', __( 'Add New', 'wp-content-menu' ), $post_type_object->labels->singular_name )
+					);
+				}
+
 				$sub[$index] = $value;
 			}
 
