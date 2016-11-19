@@ -21,12 +21,30 @@ class Menu {
 		// Load localization files.
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'wp-content-menu' );
 		load_textdomain( 'wp-content-menu', WP_LANG_DIR . '/wp-content-menu/wp-content-menu-' . $locale . '.mo' );
-		load_textdomain( 'wp-content-menu', PAPI_PLUGIN_DIR . '../languages/wp-content-menu-' . $locale . '.mo' );
+		load_textdomain( 'wp-content-menu', $this->get_plugin_dir() . '../languages/wp-content-menu-' . $locale . '.mo' );
 
 		// Hook into admin actions.
 		add_action( 'admin_init', [$this, 'remove_post_types_menu'] );
 		add_action( 'admin_init', [$this, 'move_post_type_menu'] );
 		add_action( 'admin_menu', [$this, 'admin_menu'] );
+	}
+
+	/**
+	 * Get plugin directory.
+	 *
+	 * @return string
+	 */
+	protected function get_plugin_dir() {
+		$mu_dir = trailingslashit( sprintf( '%s/%s/src',
+			WPMU_PLUGIN_DIR,
+			basename( dirname( __DIR__ ) )
+		) );
+
+		if ( is_dir( $mu_dir ) ) {
+			return $mu_dir;
+		}
+
+		return trailingslashit( __DIR__ );
 	}
 
 	/**
