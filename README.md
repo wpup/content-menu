@@ -1,4 +1,4 @@
-# Content menu
+# Content menu [![Build Status](https://travis-ci.org/frozzare/wp-content-menu.svg?branch=master)](https://travis-ci.org/frozzare/wp-content-menu)
 
 > Work in progress
 
