@@ -15,9 +15,6 @@ class Menu {
 	 * Menu construct.
 	 */
 	public function __construct() {
-		// Setup menu index.
-		$this->index = $this->get_index();
-
 		// Load localization files.
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'wp-content-menu' );
 		load_textdomain( 'wp-content-menu', WP_LANG_DIR . '/wp-content-menu/wp-content-menu-' . $locale . '.mo' );
@@ -55,11 +52,17 @@ class Menu {
 	protected function get_index() {
 		global $menu;
 
+		if ( isset( $this->index ) ) {
+			return $this->index;
+		}
+
 		$index = 2;
 
 		while ( isset( $menu[$index] ) ) {
 			$index++;
 		}
+
+		$this->index = $index;
 
 		return $index;
 	}
@@ -75,7 +78,7 @@ class Menu {
 			'content',
 			[$this, 'render'],
 			'dashicons-editor-table',
-			$this->index
+			$this->get_index()
 		);
 	}
 
@@ -89,7 +92,19 @@ class Menu {
 			return get_post_type( $post );
 		}
 
-		return isset( $_GET['post_type'] ) ? $_GET['post_type'] : '';
+		if ( isset( $_GET['post_type'] ) ) {
+			return strtolower( sanitize_text_field( $_GET['post_type'] ) );
+		}
+
+		$req_uri  = $_SERVER['REQUEST_URI'];
+		$exploded = explode( '/', $req_uri );
+		$last     = end( $exploded );
+
+		if ( $last === 'post-new.php' || $last === 'edit.php' ) {
+			return 'post';
+		}
+
+		return '';
 	}
 
 	/**
@@ -132,7 +147,7 @@ class Menu {
 			$key .= $post_type;
 		}
 
-		$i = $this->index - 1;
+		$i = $this->get_index();
 
 		$post_type_object = get_post_type_object( $post_type );
 
