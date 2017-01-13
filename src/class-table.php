@@ -36,6 +36,9 @@ class Table extends \WP_List_Table {
 			}
 
 			$post_type_object = get_post_type_object( $post_type );
+			if( $post_type === 'page' ) {
+				$post_type_object->menu_icon = 'dashicons-admin-page';
+			}
 			$menu_icon = empty( $post_type_object->menu_icon ) ? 'dashicons-admin-post' : $post_type_object->menu_icon;
 
 			$links = $submenu[$key];
