@@ -6,7 +6,7 @@
  * Description: Adds a content menu to WordPress admin
  * Author: Fredrik Forsmo
  * Author URI: https://github.com/frozzare
- * Version: 1.0.0
+ * Version: 1.0.1
  * Textdomain: wp-content-menu
  */
 
