@@ -39,7 +39,7 @@ add_filter( 'content_menu_add_new_item_label', function ( $label ) {
 Disable content menu for users:
 
 ```php
-add_filter( 'content_menu_user_allowed', function ($allowed, $user) {
+add_filter( 'content_menu_user_allowed', function ( $allowed, $user ) {
   return false;
 }, 10, 2 );
 ```
