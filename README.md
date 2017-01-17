@@ -36,6 +36,14 @@ add_filter( 'content_menu_add_new_item_label', function ( $label ) {
 } );
 ```
 
+Disable content menu for users:
+
+```php
+add_filter( 'content_menu_user_allowed', function ($allowed, $user) {
+  return false;
+}, 10, 2 );
+```
+
 ## Screenshots
 
 ![](https://cloud.githubusercontent.com/assets/14610/20240391/4ab1f8d0-a917-11e6-9994-616924b94f53.png)

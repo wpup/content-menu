@@ -15,6 +15,11 @@ class Menu {
 	 * Menu construct.
 	 */
 	public function __construct() {
+		// Bail if user isn't allowed to use content menu.
+		if ( ! $this->user_allowed() ) {
+			return;
+		}
+
 		// Load localization files.
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'wp-content-menu' );
 		load_textdomain( 'wp-content-menu', WP_LANG_DIR . '/wp-content-menu/wp-content-menu-' . $locale . '.mo' );
@@ -265,5 +270,22 @@ class Menu {
 			?>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Determine if the current user is allowed to use content menu or not.
+	 *
+	 * @return bool
+	 */
+	protected function user_allowed() {
+		/**
+		 * Modify if current user is allowed to use content menu or not.
+		 *
+		 * @param  bool    $allowed
+		 * @param  WP_User $user
+		 *
+		 * @return bool
+		 */
+		return apply_filters( 'content_menu_user_allowed', true, wp_get_current_user() );
 	}
 }

@@ -17,6 +17,16 @@ class Menu_Test extends \WP_UnitTestCase {
 		unset( $this->class );
 	}
 
+	public function test_user_allowed() {
+		$class = new Menu;
+		$this->assertSame( 10, has_action( 'admin_init', [$class, 'remove_post_types_menu'] ) );
+
+		add_filter( 'content_menu_user_allowed', '__return_false' );
+
+		$class = new Menu;
+		$this->assertSame( false, has_action( 'admin_init', [$class, 'remove_post_types_menu'] ) );
+	}
+
 	public function test_actions() {
 		$this->assertSame( 10, has_action( 'admin_init', [$this->class, 'remove_post_types_menu'] ) );
 		$this->assertSame( 10, has_action( 'admin_init', [$this->class, 'move_post_type_menu'] ) );
