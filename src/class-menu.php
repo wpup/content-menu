@@ -199,7 +199,7 @@ class Menu {
 			];
 
 			foreach ( $submenu[$key] as $index => $value ) {
-				if ( $value[0] === $post_type_object->labels->add_new ) {
+				if ( $value[0] === $post_type_object->labels->add_new_item && strpos( strtolower( $value[0] ), strtolower( $post_type_object->labels->singular_name ) ) === false ) {
 					$value[0] = apply_filters( 'content_menu_add_new_item_label',
 						sprintf( '%s %s', __( 'Add New', 'wp-content-menu' ), $post_type_object->labels->singular_name )
 					);
