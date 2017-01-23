@@ -12,6 +12,13 @@ class Menu {
 	protected $index;
 
 	/**
+	 * Post types.
+	 *
+	 * @var array.
+	 */
+	protected $post_types;
+
+	/**
 	 * Menu construct.
 	 */
 	public function __construct() {
@@ -118,27 +125,37 @@ class Menu {
 	 * @return array
 	 */
 	protected function get_post_types() {
-		$post_types = get_post_types( ['content_menu' => true] );
-		$post_types = array_values( $post_types );
-		$post_types = array_merge( $post_types, ['post', 'page'] );
-		$post_types = array_unique( $post_types );
+		if ( empty( $this->post_types ) ) {
+			$post_types = get_post_types( ['content_menu' => true] );
+			$post_types = array_values( $post_types );
+			$post_types = array_merge( $post_types, ['post', 'page'] );
+			$post_types = array_unique( $post_types );
 
-		/**
-		 * Let developers modify post types array.
-		 *
-		 * @param array $post_types
-		 */
-		$post_types = apply_filters( 'content_menu_post_types', $post_types );
-		$post_types = is_array( $post_types ) ? $post_types : [];
+			/**
+			 * Let developers modify post types array.
+			 *
+			 * @param array $post_types
+			 */
+			$post_types = apply_filters( 'content_menu_post_types', $post_types );
+			$post_types = is_array( $post_types ) ? $post_types : [];
 
-		return $post_types;
+			$this->post_types = $post_types;
+		}
+
+		return $this->post_types;
 	}
 
 	/**
 	 * Move current post type menu items to content menu item.
 	 */
 	public function move_post_type_menu() {
+		// Bail if post type cannot be found.
 		if ( ( ! $post_type = $this->get_post_type() ) ) {
+			return;
+		}
+
+		// Bail if post type shouldn't be moved.
+		if ( ! in_array( $post_type, $this->get_post_types() ) ) {
 			return;
 		}
 
