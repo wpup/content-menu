@@ -104,6 +104,10 @@ class Menu {
 			return get_post_type( $post );
 		}
 
+		if ( isset( $_GET['post'] ) ) {
+			return get_post_type( sanitize_text_field( $_GET['post'] ) );
+		}
+
 		if ( isset( $_GET['post_type'] ) ) {
 			return strtolower( sanitize_text_field( $_GET['post_type'] ) );
 		}
