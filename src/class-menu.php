@@ -220,6 +220,9 @@ class Menu {
 	 */
 	public function remove_post_types_menu() {
 		global $menu;
+		
+		// Global menu should be a array.
+		$menu = is_array( $menu ) ? $menu : [];
 
 		// Remove current post type if any.
 		$post_types = array_diff( $this->get_post_types(), [$this->get_post_type()] );
