@@ -115,6 +115,7 @@ class Menu {
 		$req_uri  = $_SERVER['REQUEST_URI'];
 		$exploded = explode( '/', $req_uri );
 		$last     = end( $exploded );
+		$last     = parse_url( $last, PHP_URL_PATH );
 
 		if ( $last === 'post-new.php' || $last === 'edit.php' ) {
 			return 'post';
@@ -220,7 +221,7 @@ class Menu {
 	 */
 	public function remove_post_types_menu() {
 		global $menu;
-		
+
 		// Global menu should be a array.
 		$menu = is_array( $menu ) ? $menu : [];
 
