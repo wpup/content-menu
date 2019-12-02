@@ -1,4 +1,7 @@
-# Content menu [![Build Status](https://travis-ci.org/wpup/content-menu.svg?branch=master)](https://travis-ci.org/wpup/content-menu)
+# Content menu
+
+[![Build Status](https://travis-ci.org/wpup/content-menu.svg?branch=master)](https://travis-ci.org/wpup/content-menu)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 Adds a content menu to WordPress admin where all your post types that are used for content can live, when doing this the post type configured to use content menu will be removed from the admin menu and if you have a lot of post types you will see a more clean admin menu than before.
 
